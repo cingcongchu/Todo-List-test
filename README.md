@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Todo List Application
 
-## Getting Started
+A modern, clean-code Todo List application built with Next.js, Prisma ORM, and SQLite.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+-  Create, Read, Update, Delete (CRUD) operations
+-  Toggle todo completion status
+-  Add descriptions, start dates, and deadlines
+-  Two-column layout: Active and Completed tasks
+-  Responsive design with Tailwind CSS
+-  Persistent storage with SQLite
+
+## Project Structure 
+
+```
+todolist-app/
+├── prisma/
+│   ├── dev.db              # SQLite database file
+│   └── schema.prisma       # Database schema definition
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── todos/
+│   │   │       ├── route.ts          # API endpoints (GET, POST)
+│   │   │       └── [id]/
+│   │   │           └── route.ts      # API endpoints (GET, PUT, DELETE)
+│   │   ├── components/
+│   │   │   ├── TodoList.tsx          # Main container component
+│   │   │   ├── TodoCard.tsx          # Individual todo display
+│   │   │   ├── TodoForm.tsx          # Form for creating todos
+│   │   │   ├── TodoColumn.tsx        # Column for todo groups
+│   │   │   ├── TodoStats.tsx         # Statistics display
+│   │   │   ├── ErrorMessage.tsx      # Error notification
+│   │   │   └── LoadingSpinner.tsx    # Loading indicator
+│   │   ├── layout.tsx               # Root layout
+│   │   └── page.tsx                 # Home page
+│   ├── constants/
+│   │   └── index.ts                 # Application constants
+│   ├── hooks/
+│   │   └── useTodos.ts              # Custom React hook for todos
+│   ├── lib/
+│   │   ├── prisma.ts                # Prisma client configuration
+│   │   └── utils.ts                 # Utility functions
+│   ├── services/
+│   │   └── todoApi.ts               # API service layer
+│   └── types/
+│       └── todo.ts                  # TypeScript type definitions
+├── package.json
+├── tsconfig.json
+└── tailwind.config.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Prerequisites
+- Node.js 18+
+- npm or yarn
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Install dependencies:
+```bash
+npm install
+```
 
-## Learn More
+2. Setup the database:
+```bash
+npx prisma migrate dev --name init
+```
 
-To learn more about Next.js, take a look at the following resources:
+3. Run the development server:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Open [http://localhost:3000](http://localhost:3000)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Database Schema
 
-## Deploy on Vercel
+```prisma
+model Todo {
+  id          Int       @id @default(autoincrement())
+  title       String
+  description String?
+  completed   Boolean   @default(false)
+  startDate   DateTime?
+  deadline    DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: SQLite
+- **ORM**: Prisma
+- **State Management**: React Hooks
+

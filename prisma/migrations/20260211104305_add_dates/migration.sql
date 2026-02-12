@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Todo" ADD COLUMN "deadline" DATETIME;
+ALTER TABLE "Todo" ADD COLUMN "startDate" DATETIME;
