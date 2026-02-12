@@ -55,24 +55,45 @@ todolist-app/
 - Node.js 18+
 - npm or yarn
 
-### Installation
+## Installation
 
-1. Install dependencies:
+### Step 1: Install Dependencies
+
 ```bash
 npm install
 ```
 
-2. Setup the database:
+### Step 2: Setup Environment Variables
+
+Create a `.env` file in the root directory:
+
+```bash
+cp .env.example .env
+```
+
+Or manually create `.env` file with this content:
+
+```env
+DATABASE_URL="file:./prisma/dev.db"
+```
+
+### Step 3: Generate Prisma Client
+
+```bash
+npx prisma generate
+```
+
+### Step 4: Run Database Migrations
+
 ```bash
 npx prisma migrate dev --name init
 ```
 
-3. Run the development server:
+### Step 5: Start the Development Server
+
 ```bash
 npm run dev
 ```
-
-4. Open [http://localhost:3000](http://localhost:3000)
 
 ## Database Schema
 
