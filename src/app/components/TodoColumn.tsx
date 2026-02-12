@@ -1,8 +1,3 @@
-/**
- * TodoColumn Component
- * Displays a column of todos (active or completed)
- */
-
 import type { Todo, TodoFormData } from '@/types/todo';
 import { TodoCard } from './TodoCard';
 

@@ -1,8 +1,3 @@
-/**
- * LoadingSpinner Component
- * Displays loading state indicator
- */
-
 interface LoadingSpinnerProps {
   show: boolean;
 }

@@ -1,8 +1,3 @@
-/**
- * TodoForm Component
- * Form for creating new todos
- */
-
 'use client';
 
 import { useState } from 'react';
@@ -32,7 +27,6 @@ export function TodoForm({ onSubmit, loading }: TodoFormProps) {
       deadline: formData.deadline || undefined,
     });
 
-    // Reset form after successful submission
     setFormData({
       title: '',
       description: '',

@@ -1,18 +1,7 @@
-/**
- * API Service Layer
- * Handles all API calls for the Todo application
- * Provides centralized error handling and request configuration
- */
-
 import type { Todo, CreateTodoInput, UpdateTodoInput } from '@/types/todo';
 import { API_ENDPOINTS, ERROR_MESSAGES } from '@/constants';
 import { parseJsonResponse } from '@/lib/utils';
 
-/**
- * Fetches all todos from the API
- * @returns Promise with array of todos
- * @throws Error if fetch fails
- */
 export async function fetchTodos(): Promise<Todo[]> {
   try {
     const response = await fetch(API_ENDPOINTS.TODOS);
@@ -23,12 +12,6 @@ export async function fetchTodos(): Promise<Todo[]> {
   }
 }
 
-/**
- * Creates a new todo
- * @param data - Todo data to create
- * @returns Promise with created todo
- * @throws Error if creation fails
- */
 export async function createTodo(data: CreateTodoInput): Promise<Todo> {
   try {
     const response = await fetch(API_ENDPOINTS.TODOS, {
@@ -51,13 +34,6 @@ export async function createTodo(data: CreateTodoInput): Promise<Todo> {
   }
 }
 
-/**
- * Updates an existing todo
- * @param id - Todo ID to update
- * @param data - Partial todo data to update
- * @returns Promise with updated todo
- * @throws Error if update fails
- */
 export async function updateTodo(id: number, data: UpdateTodoInput): Promise<Todo> {
   try {
     const response = await fetch(API_ENDPOINTS.TODO_BY_ID(id), {
@@ -75,13 +51,6 @@ export async function updateTodo(id: number, data: UpdateTodoInput): Promise<Tod
   }
 }
 
-/**
- * Toggles the completion status of a todo
- * @param id - Todo ID
- * @param completed - New completion status
- * @returns Promise with updated todo
- * @throws Error if toggle fails
- */
 export async function toggleTodoComplete(
   id: number,
   completed: boolean
@@ -89,12 +58,6 @@ export async function toggleTodoComplete(
   return updateTodo(id, { completed });
 }
 
-/**
- * Deletes a todo
- * @param id - Todo ID to delete
- * @returns Promise indicating success
- * @throws Error if deletion fails
- */
 export async function deleteTodo(id: number): Promise<void> {
   try {
     const response = await fetch(API_ENDPOINTS.TODO_BY_ID(id), {
@@ -110,12 +73,6 @@ export async function deleteTodo(id: number): Promise<void> {
   }
 }
 
-/**
- * Fetches a single todo by ID
- * @param id - Todo ID
- * @returns Promise with todo or null if not found
- * @throws Error if fetch fails
- */
 export async function fetchTodoById(id: number): Promise<Todo | null> {
   try {
     const response = await fetch(API_ENDPOINTS.TODO_BY_ID(id));

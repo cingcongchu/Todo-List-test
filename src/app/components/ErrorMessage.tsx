@@ -1,8 +1,3 @@
-/**
- * ErrorMessage Component
- * Displays error messages to the user
- */
-
 interface ErrorMessageProps {
   message: string | null;
   onDismiss?: () => void;

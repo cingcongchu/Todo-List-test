@@ -1,8 +1,3 @@
-/**
- * TodoStats Component
- * Displays todo statistics summary
- */
-
 interface TodoStatsProps {
   total: number;
   completed: number;

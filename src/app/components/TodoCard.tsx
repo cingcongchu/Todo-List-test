@@ -1,8 +1,3 @@
-/**
- * TodoCard Component
- * Displays a single todo item with edit, toggle, and delete actions
- */
-
 'use client';
 
 import type { Todo, TodoFormData } from '@/types/todo';
@@ -33,7 +28,6 @@ export function TodoCard({
   onUpdateEditingTodo,
   loading,
 }: TodoCardProps) {
-  // Render editing mode
   if (isEditing && editingTodo) {
     return (
       <div className="card-compact">
@@ -75,7 +69,6 @@ export function TodoCard({
     );
   }
 
-  // Render display mode
   return (
     <div className="card-compact">
       <div className="flex items-start justify-between">
@@ -110,9 +103,6 @@ export function TodoCard({
   );
 }
 
-/**
- * Date input component for editing
- */
 function DateInput({
   label,
   value,
@@ -135,9 +125,6 @@ function DateInput({
   );
 }
 
-/**
- * Displays todo dates
- */
 function TodoDates({
   startDate,
   deadline,
@@ -163,9 +150,6 @@ function TodoDates({
   );
 }
 
-/**
- * Todo action buttons
- */
 function TodoActions({
   todo,
   onToggleComplete,

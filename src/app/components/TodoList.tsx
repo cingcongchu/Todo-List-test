@@ -1,9 +1,3 @@
-/**
- * TodoList Component (Refactored)
- * Main container component that orchestrates the todo application
- * Uses custom hooks and sub-components for clean separation of concerns
- */
-
 'use client';
 
 import { useTodos } from '@/hooks/useTodos';
@@ -15,17 +9,12 @@ import type { TodoFormData } from '@/types/todo';
 
 export default function TodoList() {
   const {
-    // State
     loading,
     error,
     editingTodo,
-
-    // Derived state
     activeTodos,
     completedTodos,
     stats,
-
-    // Actions
     createTodo,
     updateTodo,
     deleteTodo,
